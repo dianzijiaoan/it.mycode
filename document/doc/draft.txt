@@ -1,12 +1,23 @@
 所有的信息保存hash值，此值是系统数据的唯一标识
 对于相似度对比的信息，给前端用户提示，基于用户选择处理（title，hash，ctime）
 
+部署docker（k8s、dns、es、fastFDFS）
+
+资源库|设置
+
+
 文档详情页是目录树的形式展示该文件所包含的所有的文件树形结构
-title、docType、FileType、filesize、Category、docDate、isbn 
+title、docType、docDate、FileType、filesize、Category、isbn、hash、author、原创标识
 无法显式的属性值就用 - 代替
 
+分类：
+	书籍，视频，文章
+	
+书籍：自制（打上原创表）、附件添加
+文章：参考文献，空缺预留补漏位
+
 文档：
-     附件（仅文件）、纯文本、笔记、收藏夹、便签、todolist、音乐库
+     资源（附件，仅文件，或者纯文字）、纯文本、书籍、笔记、收藏夹、便签、todolist、音乐库、电影；当docType调整后，需要迁移数据到对应的栏目中
      
      文档标题、分类、标签归档到一个表中，扩展信息根据不同的类型划分到不同的扩展表中
      
@@ -19,7 +30,7 @@ title、docType、FileType、filesize、Category、docDate、isbn
      
 笔记
      capture的图片是以ppt还是什么方式连续展示呢？
-	 支持 html、markdown两种模式切换；
+	 支持 html、markdown两种模式切换：后台保存的时候基于前端编辑器的字段名或者其他标识，content前加上editor_type，这样查看渲染和编辑的时候即可映射到对应的编辑器
 	 
 	 
 权限：
@@ -32,6 +43,8 @@ title、docType、FileType、filesize、Category、docDate、isbn
 		每个登录用户可以设置自己的掩码值（系统给出默认的掩码值）
 		rwrw = go  当对某个不归属于任何组或者权限组之外的用户赋予权限的时候用o组的权限设置
 		此权限只是定位到action级别
+		
+		添加文档的时候有授权操作（支持批量，公开+指定+私有[公开、指定未选择]）
 		
 	做到文字显示层级
 		比如：当录入文档弹窗的选项减少后，那么用户直接通过链接访问则会会报链接不可用的提示
@@ -50,5 +63,5 @@ fastFDFS
 	所以做系统的时候预留替换功能（fdfs://代表走FDFS系统， local://代表走本地服务器 ）
 	访问的url需在逻辑代码中做替换
 
-	
+编辑操作加锁，获取编辑的version，支持对比后合并提交(git理念)
 	
