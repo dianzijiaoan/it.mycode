@@ -4,7 +4,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * <p>
@@ -42,29 +41,30 @@ public class TableDemo {
         employeeTable.put("TCS", "122", "Shyam");
         employeeTable.put("TCS", "123", "Sunil");
 
-        //get Map corresponding to IBM
-        Map<String, String> ibmEmployees = employeeTable.row("IBM");
-
-        System.out.println("List of IBM Employees");
-        for (Map.Entry<String, String> entry : ibmEmployees.entrySet()) {
-            System.out.println("Emp Id: " + entry.getKey() + ", Name:" + entry.getValue());
-        }
-
-        //get all the unique keys of the table
-        Set<String> employers = employeeTable.rowKeySet();
-        System.out.print("Employers: ");
-        for (String employer : employers) {
-            System.out.print(employer + " ");
-        }
-        System.out.println();
-
-        System.out.println("============");
+//        System.out.println("debug entrySet");
+//        //get Map corresponding to IBM
+//        Map<String, String> ibmEmployees = employeeTable.row("IBM");
+//
+//        System.out.println("List of IBM Employees");
+//        for (Map.Entry<String, String> entry : ibmEmployees.entrySet()) {
+//            System.out.println("Emp Id: " + entry.getKey() + ", Name:" + entry.getValue());
+//        }
+//
+//        //get all the unique keys of the table
+//        Set<String> employers = employeeTable.rowKeySet();
+//        System.out.print("Employers: ");
+//        for (String employer : employers) {
+//            System.out.print(employer + " ");
+//        }
+//        System.out.println();
+//
+//        System.out.println("============");
 
         //get a Map corresponding to 102
         Map<String, String> EmployerMap = employeeTable.column("102");
-        for (Map.Entry<String, String> entry : EmployerMap.entrySet()) {
-            System.out.println("Employer: " + entry.getKey() + ", Name: " + entry.getValue());
-        }
+//        for (Map.Entry<String, String> entry : EmployerMap.entrySet()) {
+//            System.out.println("Employer: " + entry.getKey() + ", Name: " + entry.getValue());
+//        }
 
     }
 }
